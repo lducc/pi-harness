@@ -1,0 +1,20 @@
+# Allowlist: only the portable harness. Auth, sessions, memory, caches and installs stay local.
+/*
+!/.gitignore
+!/README.md
+!/install.sh
+!/AGENTS.md
+!/settings.json
+!/sandbox.json
+!/vision.json
+!/claude-bridge.json
+!/mcp-adapter.json
+!/agents/
+!/agents-skills/
+!/extensions/
+!/skills/
+!/prompts/
+!/patches/
+node_modules/
+.venv/
+__pycache__/
