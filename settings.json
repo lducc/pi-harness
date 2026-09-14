@@ -1,0 +1,34 @@
+{
+  "theme": "dark",
+  "defaultProvider": "claude-bridge",
+  "defaultModel": "claude-opus-5-5",
+  "defaultThinkingLevel": "medium",
+  "packages": [
+    "npm:pi-btw",
+    "npm:@narumitw/pi-usage",
+    "npm:pi-mcp-adapter",
+    "git:github.com/amosblomqvist/pi-interactive-subagents",
+    "git:github.com/amosblomqvist/pi-dictate",
+    "git:github.com/hinsencamp/pi-research-agent",
+    "npm:@narumitw/pi-accounts",
+    "npm:@getpipher/vision",
+    "npm:pi-claude-bridge",
+    {
+      "source": "../../tools/vibe-wise",
+      "extensions": [
+        "!pi/ask-user-question.ts"
+      ]
+    },
+    "npm:@aliou/pi-guardrails@0.19.0",
+    "npm:pi-sandbox@0.7.2"
+  ],
+  "hideThinkingBlock": false,
+  "modelThinkingLevels": {
+    "openai/gpt-6.1-sol": "high",
+    "claude-bridge/claude-opus-5-5": "medium"
+  },
+  "extensions": [
+    "-builtin:mcp"
+  ],
+  "showCacheMissNotices": true
+}
