@@ -1,0 +1,90 @@
+claim: "Execution feedback closes the loop between an LLM agent and verified high-performance GPU kernels."
+five_second_takeaway: "The LLM agent iterates on kernel candidates using correctness and performance feedback from real GPU execution."
+audience: "GPU systems and machine-learning researchers"
+venue:
+  name: "two-column systems/ML paper"
+  layout: "double-column"
+  target_width_mm: 178
+academic_style:
+  policy: "scientific-figure-design/assets/academic-style.yaml"
+  exceptions: []
+paper_palette:
+  path: "paper-palette.yaml"
+  palette_id: "kernel-agent-paper-v1"
+  status: "frozen"
+  role_assignments:
+    ours: "accent"
+    strong_baseline: "secondary"
+    other_baselines: "neutral"
+    upper_bound: "ink"
+    positive: "success"
+    negative: "danger"
+  cross_figure_audit_passed: true
+figure_archetype: "system overview with feedback loop"
+comparison_objects: []
+evidence:
+  data_sources: ["task specification", "GPU execution", "correctness checks", "performance profile"]
+  metrics: ["correctness", "execution speed"]
+  uncertainty: "not applicable to the method overview"
+semantic_inventory:
+  entities: ["task specification", "LLM kernel agent", "GPU"]
+  transformations: ["generate candidate", "optimize kernel", "compile and benchmark"]
+  states: ["candidate", "verified result"]
+  boundaries: []
+  evidence: ["correctness result", "performance profile"]
+  relations: ["requirements", "candidate code", "execution", "verification", "feedback"]
+visual_anchor:
+  type: "contribution badge and feedback loop"
+  label: "Main contribution / Ours"
+reading_order: "left to right, then dashed feedback from verification to generation"
+panels:
+  - id: "a"
+    purpose: "show the complete optimization and verification loop"
+semantic_encodings:
+  color:
+    neutral: "task and context"
+    purple: "LLM agent"
+    blue: "proposed optimization"
+    orange: "GPU execution"
+    green: "verified result"
+    red: "error and performance feedback"
+  shape:
+    rounded_card: "entity or transformation stage"
+  line_style:
+    solid: "primary execution flow"
+    dashed: "iterative feedback"
+icon_system:
+  enabled: true
+  family: "lucide"
+  inventory:
+    task: "lucide-file-text"
+    agent: "lucide-brain-circuit"
+    kernel: "lucide-code-xml"
+    gpu: "lucide-cpu"
+    verify: "lucide-circle-check"
+  source_manifest: "llm-kernel-agent.icons.json"
+drawio:
+  enabled: true
+  layout: "pipeline"
+  direction: "horizontal"
+  editable_source: "llm-kernel-agent.drawio"
+  embed_vector_icons: true
+accessibility:
+  grayscale_redundancy: "position, labels, solid/dashed edges, and badges duplicate color"
+  color_vision_strategy: "status and stage meaning never rely on red/green alone"
+provenance:
+  data: "illustrative method overview; no empirical values"
+  visual_elements: "Lucide SVGs selected through paper-icons; sources recorded in the icon manifest"
+deliverables:
+  editable_source: "figure-spec.json"
+  drawio_source: "llm-kernel-agent.drawio"
+  icon_manifest: "llm-kernel-agent.icons.json"
+  vector_master: "llm-kernel-agent.svg"
+  pdf_master: "llm-kernel-agent.pdf"
+  png_preview: "llm-kernel-agent.drawio.png"
+validation:
+  final_size_checked: true
+  grayscale_checked: true
+  five_second_test: "pass: input, proposed optimization, execution, verification, and feedback are visible"
+  caption_test: "pass"
+caption_draft: "Overview of the LLM kernel agent optimization loop. A task specification drives candidate generation and kernel optimization; candidates are compiled and benchmarked on the GPU, and correctness plus performance feedback is returned to the agent for iterative refinement."

@@ -1,0 +1,102 @@
+claim: ""
+five_second_takeaway: ""
+audience: ""
+venue:
+  name: ""
+  layout: "single-column"
+  target_width_mm: 85
+academic_style:
+  policy: "assets/academic-style.yaml"
+  # Audit record only. The automatic strict gate does not consume exceptions.
+  # A deviation requires an explicit, scoped, human-reviewed waiver.
+  exceptions: []
+paper_palette:
+  path: "paper-palette.yaml"
+  palette_id: ""
+  status: "draft"
+  # Freeze one contract before final Figure 1-N production.
+  role_assignments:
+    ours: "accent"
+    strong_baseline: "secondary"
+    other_baselines: "neutral"
+    upper_bound: "ink"
+    positive: "success"
+    negative: "danger"
+  cross_figure_audit_passed: false
+figure_archetype: ""
+comparison_objects: []
+agent_evolution:
+  enabled: false
+  # Required when the claim uses self-evolution, co-evolution, continual
+  # improvement, recursive self-improvement, or an adapting agent.
+  assumptions: []
+  evolving_objects: []
+  frozen_invariants: []
+  state_before: ""
+  candidate_state: ""
+  accepted_state_after: ""
+  update_signal: ""
+  update_operator: ""
+  cadence: ""
+  timescales: []
+  persistent_stores: []
+  acceptance_gate: ""
+  rejection_or_rollback_path: ""
+  safety_or_stability_constraint: ""
+  evaluation_only_sets: []
+  compute_or_sample_budget: ""
+  progression_evidence: []
+evidence:
+  data_sources: []
+  metrics: []
+  uncertainty: ""
+semantic_inventory:
+  entities: []
+  transformations: []
+  states: []
+  boundaries: []
+  evidence: []
+  relations: []
+visual_anchor:
+  type: ""
+  label: ""
+reading_order: ""
+panels:
+  - id: "a"
+    purpose: ""
+semantic_encodings:
+  color: {}
+  shape: {}
+  line_style: {}
+icon_system:
+  enabled: false
+  # One family total. Brand + a general family requires a human waiver and
+  # still fails the automatic strict gate.
+  family: "lucide"
+  inventory: {}
+  source_manifest: "figure.icons.json"
+drawio:
+  enabled: false
+  layout: "pipeline"
+  direction: "horizontal"
+  editable_source: "figure.drawio"
+  embed_vector_icons: true
+accessibility:
+  grayscale_redundancy: ""
+  color_vision_strategy: ""
+provenance:
+  data: ""
+  visual_elements: ""
+deliverables:
+  editable_source: ""
+  drawio_source: ""
+  icon_manifest: ""
+  vector_master: "figure.svg"
+  pdf_master: "figure.pdf"
+  png_preview: "figure.png"
+validation:
+  final_size_checked: false
+  grayscale_checked: false
+  five_second_test: ""
+  caption_test: ""
+caption_draft: ""

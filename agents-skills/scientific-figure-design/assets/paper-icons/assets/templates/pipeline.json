@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "title": "Method pipeline",
+    "description": "Input data passes through retrieval, model processing, and evaluation."
+  },
+  "figure": {
+    "column": "double",
+    "layout": "pipeline",
+    "direction": "horizontal",
+    "panel_label": "(a)"
+  },
+  "nodes": [
+    {
+      "id": "input",
+      "label": "Input data",
+      "subtitle": "Queries + context",
+      "icon": "lucide-database"
+    },
+    {
+      "id": "retrieve",
+      "label": "Retrieve evidence",
+      "subtitle": "Top-k candidates",
+      "icon": "lucide-search",
+      "tone": "secondary"
+    },
+    {
+      "id": "model",
+      "label": "Generate output",
+      "subtitle": "Proposed method",
+      "icon": "lucide-brain",
+      "tone": "accent",
+      "badge": "Ours"
+    },
+    {
+      "id": "evaluate",
+      "label": "Evaluate",
+      "subtitle": "Accuracy + cost",
+      "icon": "lucide-target",
+      "tone": "success"
+    }
+  ],
+  "edges": [
+    {"from": "input", "to": "retrieve"},
+    {"from": "retrieve", "to": "model", "label": "evidence"},
+    {"from": "model", "to": "evaluate", "label": "predictions"}
+  ],
+  "annotations": [
+    {"x": 728, "y": 62, "text": "Main contribution", "tone": "accent"}
+  ]
+}

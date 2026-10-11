@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "palette_id": "kernel-agent-paper-v1",
+  "paper_id": "awesome-llm-kernel-agent-demo",
+  "status": "frozen",
+  "description": "Shared method, execution, verification, and failure colors for the Kernel Agent paper figure set.",
+  "semantic": {
+    "canvas": "#FFFFFF",
+    "ink": "#172033",
+    "muted": "#5B6472",
+    "stroke": "#CBD5E1",
+    "neutral": "#64748B",
+    "accent": "#2563EB",
+    "secondary": "#7C3AED",
+    "success": "#15803D",
+    "warning": "#B45309",
+    "danger": "#B91C1C"
+  },
+  "chart_roles": {
+    "ours": "#2563EB",
+    "strong_baseline": "#7C3AED",
+    "other_baselines": "#64748B",
+    "upper_bound": "#172033",
+    "positive": "#15803D",
+    "negative": "#B91C1C",
+    "uncertainty": "#CBD5E1"
+  },
+  "rules": {
+    "freeze_before_final_figures": true,
+    "same_entity_same_color_across_figures": true,
+    "ours_color_constant": true,
+    "baseline_color_constant": true,
+    "status_color_requires_redundant_encoding": true,
+    "maximum_semantic_hues": 5,
+    "card_tints_derive_from_semantic_hues": true,
+    "background_policy": "white"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "drawio_cli_version": "30.4.1",
+  "academic_style": {
+    "version": 3,
+    "column": "double",
+    "physical_width_mm": 178,
+    "minimum_text_pt": 7,
+    "visible_type_sizes_pt": [
+      7.01,
+      8.41,
+      9.34
+    ],
+    "primary_font_family": "Arial",
+    "semantic_hues": 5,
+    "icon_families": [
+      "Lucide"
+    ],
+    "icon_payload_sha256_binding": "pass",
+    "strict_errors": 0,
+    "strict_warnings": 0
+  },
+  "paper_palette": {
+    "palette_id": "kernel-agent-paper-v1",
+    "paper_id": "awesome-llm-kernel-agent-demo",
+    "status": "frozen",
+    "sha256": "244bdc47dde21d005a4d36bb087cfc414c0b4f4d3d75c06197d9962764305bda",
+    "semantic_hues": 5,
+    "binding_verified": true,
+    "cross_figure_drift_errors": 0,
+    "cross_figure_drift_warnings": 0
+  },
+  "drawio_structure": {
+    "errors": 0,
+    "warnings": 0,
+    "semantic_nodes": 5,
+    "edges": 5,
+    "groups": 0,
+    "canvas_boundaries": 1,
+    "embedded_svg_icons": 5
+  },
+  "exports": {
+    "drawio_xml_parse": "ok",
+    "svg_xml_parse": "ok",
+    "svg_accessibility_metadata": "ok",
+    "svg_physical_width_mm": 178,
+    "svg_view_box": "0 0 1081 521",
+    "svg_validator_errors": 0,
+    "svg_validator_warnings": [
+      "The paper-icons validator counts semantic strokes and their light tints as 11 chromatic colors; the academic validator confirms five declared semantic hues."
+    ],
+    "pdf_pages": 1,
+    "pdf_page_size_pt": [
+      504.57,
+      242.94
+    ],
+    "pdf_physical_width_mm": 178,
+    "pdf_embedded_raster_images": 0,
+    "png_width_px": 2103,
+    "png_height_px": 1014,
+    "png_effective_dpi": 300.1,
+    "embedded_png_iend": "valid"
+  },
+  "visual_review": {
+    "rounds": 4,
+    "overlap": "pass",
+    "clipping": "pass",
+    "reading_order": "pass",
+    "feedback_routing": "pass",
+    "icon_family": "Lucide only",
+    "five_second_test": "pass"
+  },
+  "regression_suite": {
+    "persistent_tests": 10,
+    "passed": 10,
+    "failed": 0,
+    "covered_guards": [
+      "nonempty edge relations",
+      "inline CSS text contrast",
+      "hidden and transparent text",
+      "embedded SVG payload provenance",
+      "missing Ghostscript for PDF normalization",
+      "wrapped academic-label geometry",
+      "paper palette ID and SHA-256 binding",
+      "per-figure palette drift rejection",
+      "frozen cross-figure palette audit"
+    ]
+  }
+}

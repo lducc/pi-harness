@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "title": "LLM kernel agent optimization loop",
+    "description": "A task specification drives agent generation, GPU execution, and verification with measured feedback.",
+    "claim": "Execution feedback closes the loop between an LLM agent and verified high-performance GPU kernels."
+  },
+  "paper_palette": {
+    "path": "paper-palette.yaml"
+  },
+  "figure": {
+    "column": "double",
+    "layout": "pipeline",
+    "direction": "horizontal",
+    "width": 1080,
+    "height": 520,
+    "panel_label": "(a)"
+  },
+  "nodes": [
+    {
+      "id": "task",
+      "label": "Task specification",
+      "subtitle": "Operator + constraints",
+      "icon": "lucide-file-text",
+      "tone": "neutral",
+      "kind": "entity"
+    },
+    {
+      "id": "agent",
+      "label": "Generate candidate",
+      "subtitle": "LLM kernel agent",
+      "icon": "lucide-brain-circuit",
+      "tone": "secondary",
+      "kind": "transformation"
+    },
+    {
+      "id": "kernel",
+      "label": "Optimize kernel",
+      "subtitle": "Code + launch config",
+      "icon": "lucide-code-xml",
+      "tone": "accent",
+      "kind": "transformation",
+      "badge": "Ours"
+    },
+    {
+      "id": "gpu",
+      "label": "Execute on GPU",
+      "subtitle": "Compile + benchmark",
+      "icon": "lucide-cpu",
+      "tone": "warning",
+      "kind": "entity"
+    },
+    {
+      "id": "verify",
+      "label": "Verify result",
+      "subtitle": "Correctness + speed",
+      "icon": "lucide-circle-check",
+      "tone": "success",
+      "kind": "evidence"
+    }
+  ],
+  "edges": [
+    {
+      "from": "task",
+      "to": "agent",
+      "relation": "data"
+    },
+    {
+      "from": "agent",
+      "to": "kernel",
+      "relation": "data"
+    },
+    {
+      "from": "kernel",
+      "to": "gpu",
+      "relation": "execution"
+    },
+    {
+      "from": "gpu",
+      "to": "verify",
+      "relation": "evidence"
+    },
+    {
+      "from": "verify",
+      "to": "agent",
+      "label": "error + profile",
+      "tone": "danger",
+      "style": "dashed",
+      "relation": "feedback",
+      "exit": [0.5, 1],
+      "entry": [0.5, 1],
+      "points": [[940, 420], [360, 420]]
+    }
+  ],
+  "annotations": [
+    {
+      "x": 436,
+      "y": 78,
+      "w": 168,
+      "text": "Main contribution",
+      "tone": "accent"
+    }
+  ]
+}

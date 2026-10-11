@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If this skill helps your research figures, please cite the repository."
+title: "Scientific Figure Design"
+type: software
+authors:
+  - name: "qhy991"
+repository-code: "https://github.com/qhy991/Scientific-Figure-Design"
+url: "https://github.com/qhy991/Scientific-Figure-Design"
+license: MIT
+version: 1.0.0
+date-released: 2026-07-24
+keywords:
+  - scientific figures
+  - draw.io
+  - editable vector graphics
+  - academic visualization
+  - agent skills

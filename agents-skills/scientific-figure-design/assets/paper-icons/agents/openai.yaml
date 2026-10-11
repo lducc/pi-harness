@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paper Figure Designer"
+  short_description: "Compose polished, publication-ready academic figures"
+  default_prompt: "Use $paper-icons to turn my method description into a validated, editable paper figure."

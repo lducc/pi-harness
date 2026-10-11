@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "catalog": "catalog.json",
+  "total_catalog_icons": 581,
+  "groups": [
+    {
+      "paths": ["lucide/*.svg"],
+      "count": 177,
+      "source": "https://github.com/lucide-icons/lucide",
+      "license": "ISC",
+      "recolor_policy": "allowed"
+    },
+    {
+      "paths": ["tabler/*.svg"],
+      "count": 131,
+      "source": "https://github.com/tabler/tabler-icons",
+      "license": "MIT",
+      "recolor_policy": "allowed"
+    },
+    {
+      "paths": ["phosphor/*.svg"],
+      "count": 114,
+      "source": "https://github.com/phosphor-icons/core",
+      "license": "MIT",
+      "recolor_policy": "allowed"
+    },
+    {
+      "paths": ["duotone/*.svg"],
+      "count": 51,
+      "source": "https://github.com/phosphor-icons/core",
+      "license": "MIT",
+      "recolor_policy": "allowed"
+    },
+    {
+      "paths": ["brand/*.svg"],
+      "count": 39,
+      "source": "https://github.com/lobehub/lobe-icons",
+      "license": "MIT",
+      "trademarked": true,
+      "recolor_policy": "preserve official colors",
+      "usage": "academic identification or comparison only; no implied endorsement"
+    },
+    {
+      "paths": ["fetched/*.svg"],
+      "count": 32,
+      "source": "https://github.com/lucide-icons/lucide",
+      "license": "ISC",
+      "recolor_policy": "allowed"
+    },
+    {
+      "paths": ["svg/*.svg"],
+      "count": 37,
+      "source": "Scientific-Figure-Design project originals",
+      "license": "MIT",
+      "recolor_policy": "allowed except catalog entries marked color/non-recolorable"
+    }
+  ],
+  "upstream_collection": {
+    "source": "https://github.com/Mizar77/ml-paper-icons",
+    "commit_audited": "0e9082e78d502743a1e49ee5bcbcd27a47d15ba4",
+    "imported_icon_count": 512,
+    "curation_license": "MIT"
+  },
+  "notices": [
+    "../LICENSE",
+    "../THIRD_PARTY_LICENSES.md",
+    "../../../THIRD_PARTY_NOTICES.md"
+  ]
+}

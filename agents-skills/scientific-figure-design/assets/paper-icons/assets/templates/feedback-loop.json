@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "title": "Optimization feedback loop",
+    "description": "Candidate kernels are generated, executed in a sandbox, evaluated, and fed back to the optimizer."
+  },
+  "figure": {
+    "column": "double",
+    "layout": "freeform",
+    "panel_label": "(b)"
+  },
+  "groups": [
+    {"id": "safe", "label": "Isolated execution boundary", "tone": "secondary", "style": "dashed"}
+  ],
+  "nodes": [
+    {"id": "generate", "label": "Generate candidate", "icon": "lucide-code-xml", "tone": "accent", "x": 90, "y": 160, "w": 210, "h": 120},
+    {"id": "execute", "label": "Compile + execute", "icon": "lucide-cpu", "tone": "secondary", "group": "safe", "x": 420, "y": 90, "w": 220, "h": 120},
+    {"id": "evaluate", "label": "Measure result", "icon": "lucide-chart-line", "tone": "success", "group": "safe", "x": 760, "y": 160, "w": 210, "h": 120},
+    {"id": "memory", "label": "Update memory", "icon": "lucide-database", "x": 425, "y": 330, "w": 210, "h": 105}
+  ],
+  "edges": [
+    {"from": "generate", "to": "execute", "label": "source"},
+    {"from": "execute", "to": "evaluate", "label": "runtime"},
+    {"from": "evaluate", "to": "memory", "label": "score"},
+    {"from": "memory", "to": "generate", "label": "feedback", "style": "dashed", "tone": "accent", "route": "curve"}
+  ]
+}

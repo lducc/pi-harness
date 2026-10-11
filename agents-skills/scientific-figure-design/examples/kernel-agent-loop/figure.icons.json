@@ -1,0 +1,81 @@
+{
+  "figure": "figure.drawio",
+  "spec": "figure-spec.json",
+  "paper_icons_skill": "paper-icons",
+  "path_policy": "portable basenames and paper-icons catalog URIs",
+  "icon_family_policy": "one coherent family unless the spec documents an exception",
+  "paper_palette": {
+    "path": "paper-palette.yaml",
+    "palette_id": "kernel-agent-paper-v1",
+    "schema_version": 1,
+    "status": "frozen",
+    "sha256": "244bdc47dde21d005a4d36bb087cfc414c0b4f4d3d75c06197d9962764305bda"
+  },
+  "icons": [
+    {
+      "node_id": "task",
+      "icon_id": "lucide-file-text",
+      "family": "lucide",
+      "name": "File Text",
+      "source": "ml-paper-icons (MIT)",
+      "source_svg": "paper-icons://library/lucide/file-text.svg",
+      "catalog_svg": "library/lucide/file-text.svg",
+      "recolorable": true,
+      "embedded": true,
+      "payload_sha256": "2e613b85d24e72ca1e18dc4e1e9c9d4f485fe180b24a02f85ab25c47fb9ee698",
+      "applied_color": "#64748B"
+    },
+    {
+      "node_id": "agent",
+      "icon_id": "lucide-brain-circuit",
+      "family": "lucide",
+      "name": "Brain Circuit",
+      "source": "ml-paper-icons (MIT)",
+      "source_svg": "paper-icons://library/lucide/brain-circuit.svg",
+      "catalog_svg": "library/lucide/brain-circuit.svg",
+      "recolorable": true,
+      "embedded": true,
+      "payload_sha256": "36563890acf612772b1af53272197de3b9103aee090129de47176b249fbfb566",
+      "applied_color": "#7C3AED"
+    },
+    {
+      "node_id": "kernel",
+      "icon_id": "lucide-code-xml",
+      "family": "lucide",
+      "name": "Code Xml",
+      "source": "ml-paper-icons (MIT)",
+      "source_svg": "paper-icons://library/lucide/code-xml.svg",
+      "catalog_svg": "library/lucide/code-xml.svg",
+      "recolorable": true,
+      "embedded": true,
+      "payload_sha256": "8cca0bcd4ddd595cd15a1d2257e6be4f1e63a7ef599c09b9203f8d3d80afbabf",
+      "applied_color": "#2563EB"
+    },
+    {
+      "node_id": "gpu",
+      "icon_id": "lucide-cpu",
+      "family": "lucide",
+      "name": "Cpu",
+      "source": "ml-paper-icons (MIT)",
+      "source_svg": "paper-icons://library/lucide/cpu.svg",
+      "catalog_svg": "library/lucide/cpu.svg",
+      "recolorable": true,
+      "embedded": true,
+      "payload_sha256": "9c48f7126964046bbb5d4c4c1cac832831d7030e278f0c425d8363cafc84f441",
+      "applied_color": "#B45309"
+    },
+    {
+      "node_id": "verify",
+      "icon_id": "lucide-circle-check",
+      "family": "lucide",
+      "name": "Circle Check",
+      "source": "ml-paper-icons (MIT)",
+      "source_svg": "paper-icons://library/lucide/circle-check.svg",
+      "catalog_svg": "library/lucide/circle-check.svg",
+      "recolorable": true,
+      "embedded": true,
+      "payload_sha256": "c1c6eab3dc88b8b1826cdbd613e204164ec33619e81e32db98e0d67833377142",
+      "applied_color": "#15803D"
+    }
+  ]
+}

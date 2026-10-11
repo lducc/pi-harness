@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Figure Design"
+  short_description: "Design rigorous AI-agent and scientific figures"
+  default_prompt: "Use $scientific-figure-design to design an AI-conference-ready agent figure set with explicit evolution loops, one paper-wide palette, and editable sources."

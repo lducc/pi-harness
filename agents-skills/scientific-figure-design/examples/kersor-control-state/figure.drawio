@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" version="30.4.1">
+  <diagram name="Fig2-KerSor-Control-State" id="fig2-control-state">
+    <mxGraphModel dx="1200" dy="650" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="1240" pageHeight="650" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="f2_akw" value="AKW · reusable method topology, explicit execution binding" style="swimlane;container=1;pointerEvents=0;startSize=44;rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F5FE;strokeColor=#6F42C1;strokeWidth=2;fontColor=#56319A;fontFamily=Helvetica;fontSize=19;fontStyle=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1200" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_topology" value="&lt;b&gt;Search topology&lt;/b&gt;&lt;br&gt;iterative · tree · bandit · evolutionary" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A88BE3;strokeWidth=2;fontColor=#2F2349;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_akw">
+          <mxGeometry x="35" y="68" width="310" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_akw_arrow_1" value="+" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#6F42C1;fontFamily=Helvetica;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_akw">
+          <mxGeometry x="355" y="82" width="35" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_binding" value="&lt;b&gt;Execution contract&lt;/b&gt;&lt;br&gt;backend · DSL · harness · profiler · portability" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#A88BE3;strokeWidth=2;fontColor=#2F2349;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_akw">
+          <mxGeometry x="400" y="68" width="390" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_akw_arrow_2" value="→" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#6F42C1;fontFamily=Helvetica;fontSize=30;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_akw">
+          <mxGeometry x="800" y="82" width="45" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_eligible" value="&lt;b&gt;Task-eligible workflow&lt;/b&gt;&lt;br&gt;same topology, concrete binding&lt;br&gt;control loop unchanged" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EEE8FA;strokeColor=#6F42C1;strokeWidth=2;fontColor=#56319A;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_akw">
+          <mxGeometry x="855" y="68" width="310" height="72" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f2_control" value="KerSor per-session control · select → verify → carry evidence" style="swimlane;container=1;pointerEvents=0;startSize=44;rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F7FC;strokeColor=#4472C4;strokeWidth=2;fontColor=#173F7A;fontFamily=Helvetica;fontSize=19;fontStyle=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="1200" height="265" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_filter" value="&lt;b&gt;1 · Filter + score&lt;/b&gt;&lt;br&gt;contract eligibility&lt;br&gt;task fit + WSR prior" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7EA1E6;strokeWidth=2;fontColor=#1F2937;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="30" y="70" width="240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_arrow_12" value="→" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#4472C4;fontFamily=Helvetica;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="275" y="92" width="35" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_dispatch" value="&lt;b&gt;2 · Dispatch&lt;/b&gt;&lt;br&gt;invoke one workflow&lt;br&gt;under the remaining budget" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#7EA1E6;strokeWidth=2;fontColor=#1F2937;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="315" y="70" width="240" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_arrow_23" value="→" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#4472C4;fontFamily=Helvetica;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="560" y="92" width="35" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_analyze" value="&lt;b&gt;3 · Analyze + trust gate&lt;/b&gt;&lt;br&gt;compile · correctness · latency&lt;br&gt;fair-baseline validity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E8;strokeColor=#D17A00;strokeWidth=2;fontColor=#6D3F00;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="600" y="70" width="250" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_arrow_34" value="→" style="text;html=1;strokeColor=none;fillColor=none;fontColor=#4472C4;fontFamily=Helvetica;fontSize=28;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="855" y="92" width="35" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_evidence" value="&lt;b&gt;4 · Evidence state E(t+1)&lt;/b&gt;&lt;br&gt;validated wins · failed strategies&lt;br&gt;caveats · remaining directions" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E7F4EA;strokeColor=#3B8B5A;strokeWidth=2;fontColor=#185C37;fontFamily=Helvetica;fontSize=16;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="895" y="70" width="275" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_handoff_label" value="H(t+1) · typed, confidence-tagged handoff updates the next dispatch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF1FB;strokeColor=#7EA1E6;fontColor=#173F7A;fontFamily=Helvetica;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="f2_control">
+          <mxGeometry x="285" y="190" width="630" height="42" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f2_wsr" value="WSR · cross-session experience prior" style="swimlane;container=1;pointerEvents=0;startSize=38;rounded=1;whiteSpace=wrap;html=1;fillColor=#F4FAF5;strokeColor=#3B8B5A;strokeWidth=2;fontColor=#185C37;fontFamily=Helvetica;fontSize=18;fontStyle=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="20" y="515" width="760" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_wsr_record" value="&lt;b&gt;(context, workflow, confidence, outcome)&lt;/b&gt;&lt;br&gt;append one audited choice after each session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#8FC6A1;fontColor=#1F2937;fontFamily=Helvetica;fontSize=15;align=center;verticalAlign=middle;" vertex="1" parent="f2_wsr">
+          <mxGeometry x="25" y="53" width="710" height="44" as="geometry" />
+        </mxCell>
+
+        <mxCell id="f2_calibration" value="Context-matched ranking prior" style="swimlane;container=1;pointerEvents=0;startSize=38;rounded=1;whiteSpace=wrap;html=1;fillColor=#F8F5FE;strokeColor=#6F42C1;strokeWidth=2;fontColor=#56319A;fontFamily=Helvetica;fontSize=18;fontStyle=1;align=center;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="810" y="515" width="410" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_calibration_text" value="retrieve similar contexts&lt;br&gt;update Filter + score for the next session" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#BBA7E8;fontColor=#2F2349;fontFamily=Helvetica;fontSize=15;align=center;verticalAlign=middle;" vertex="1" parent="f2_calibration">
+          <mxGeometry x="20" y="53" width="370" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="f2_wsr_to_prior" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#3B8B5A;strokeWidth=2;endArrow=classic;endFill=1;" edge="1" parent="1" source="f2_wsr" target="f2_calibration">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

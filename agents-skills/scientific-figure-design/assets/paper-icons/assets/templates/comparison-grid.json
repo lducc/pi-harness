@@ -1,0 +1,19 @@
+{
+  "metadata": {
+    "title": "Method comparison",
+    "description": "Baselines and the proposed method are compared with aligned visual structure."
+  },
+  "figure": {
+    "column": "single",
+    "layout": "grid",
+    "columns": 2,
+    "panel_label": "(c)"
+  },
+  "nodes": [
+    {"id": "base-a", "label": "Baseline A", "subtitle": "Static policy", "icon": "lucide-sliders-horizontal"},
+    {"id": "base-b", "label": "Baseline B", "subtitle": "Rule-based", "icon": "lucide-git-branch"},
+    {"id": "ours", "label": "Proposed method", "subtitle": "Adaptive policy", "icon": "lucide-sparkles", "tone": "accent", "badge": "Ours"},
+    {"id": "result", "label": "Best trade-off", "subtitle": "Quality + efficiency", "icon": "lucide-chart-line", "tone": "success"}
+  ],
+  "edges": []
+}
