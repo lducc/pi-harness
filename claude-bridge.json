@@ -1,0 +1,9 @@
+{
+  "startupNoticeShown": "2026-09-28",
+  "askClaude": {
+    "enabled": true
+  },
+  "provider": {
+    "plan": "max"
+  }
+}
