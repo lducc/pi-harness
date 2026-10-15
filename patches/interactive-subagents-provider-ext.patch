@@ -1,0 +1,41 @@
+diff --git a/pi-extension/subagents/index.ts b/pi-extension/subagents/index.ts
+index 7e20a0f..4c9f312 100644
+--- a/pi-extension/subagents/index.ts
++++ b/pi-extension/subagents/index.ts
+@@ -869,12 +869,36 @@ function applySandboxToParts(
+       const extPath = getToolExtensionPath(tool);
+       if (extPath && existsSync(extPath)) extPaths.add(extPath);
+     }
++    // The model's provider may itself come from an extension (e.g. claude-bridge);
++    // without it `--no-extensions` leaves the child with an unknown model.
++    const providerExt = getProviderExtensionPath(loadout.model);
++    if (providerExt) extPaths.add(providerExt);
++    // Safety extensions must survive `--no-extensions`, or restricted children run unguarded.
++    for (const guardExt of getGuardExtensionPaths()) extPaths.add(guardExt);
+     for (const extPath of extPaths) {
+       parts.push("-e", shellEscape(extPath));
+     }
+   }
+ }
+ 
++/** Map an extension-registered model provider (`provider/model`) to its package dir. */
++function getProviderExtensionPath(model: string | null | undefined): string | undefined {
++  const provider = model?.split("/")[0];
++  const map: Record<string, string> = {
++    "claude-bridge": join(getAgentConfigDir(), "npm", "node_modules", "pi-claude-bridge"),
++  };
++  const path = provider ? map[provider] : undefined;
++  return path && existsSync(path) ? path : undefined;
++}
++
++/** Installed safety extensions that every sandboxed child must load. */
++function getGuardExtensionPaths(): string[] {
++  const npmDir = join(getAgentConfigDir(), "npm", "node_modules");
++  return [join(npmDir, "@aliou", "pi-guardrails"), join(npmDir, "pi-sandbox")].filter((path) =>
++    existsSync(path),
++  );
++}
++
+ function buildPiPromptArgs(params: {
+   effectiveSkills?: string;
+   taskDelivery: "direct" | "artifact";
