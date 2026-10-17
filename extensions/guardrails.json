@@ -1,0 +1,181 @@
+{
+  "$schema": "https://unpkg.com/@aliou/pi-guardrails@0.19.0/schema.json",
+  "enabled": true,
+  "applyBuiltinDefaults": true,
+  "features": {
+    "policies": true,
+    "permissionGate": true,
+    "pathAccess": false
+  },
+  "policies": {
+    "rules": [
+      {
+        "id": "home-ssh",
+        "description": "SSH directory and keys",
+        "patterns": [
+          {
+            "pattern": "~/.ssh/**"
+          },
+          {
+            "pattern": "(^|/)\\.ssh(/|$)",
+            "regex": true
+          }
+        ],
+        "allowedPatterns": [
+          {
+            "pattern": "~/.ssh/*.pub"
+          },
+          {
+            "pattern": "(^|/)\\.ssh/[^/]+\\.pub$",
+            "regex": true
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "respectCwd": false
+      },
+      {
+        "id": "home-config",
+        "description": "Credential stores: gh, gcloud, pi-setup secrets, keyrings, browser and chat profiles",
+        "patterns": [
+          {
+            "pattern": "~/.config/gh/**"
+          },
+          {
+            "pattern": "~/.config/gcloud/**"
+          },
+          {
+            "pattern": "~/.config/pi-setup/**"
+          },
+          {
+            "pattern": "~/.config/zen/**"
+          },
+          {
+            "pattern": "~/.config/discord/**"
+          },
+          {
+            "pattern": "~/.local/share/keyrings/**"
+          },
+          {
+            "pattern": "~/.mozilla/**"
+          },
+          {
+            "pattern": "(^|/)\\.config/(gh|gcloud|pi-setup|zen|discord)(/|$)",
+            "regex": true
+          },
+          {
+            "pattern": "(^|/)\\.local/share/keyrings(/|$)",
+            "regex": true
+          },
+          {
+            "pattern": "(^|/)\\.mozilla(/|$)",
+            "regex": true
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "respectCwd": false
+      },
+      {
+        "id": "home-gpg",
+        "description": "GPG keys",
+        "patterns": [
+          {
+            "pattern": "~/.gnupg/**"
+          },
+          {
+            "pattern": "~/*.gpg"
+          },
+          {
+            "pattern": "(^|/)\\.gnupg(/|$)",
+            "regex": true
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "respectCwd": false
+      },
+      {
+        "id": "agent-credentials",
+        "description": "Login tokens for pi, Claude Code, and Codex",
+        "patterns": [
+          {
+            "pattern": "~/.pi/agent/auth.json"
+          },
+          {
+            "pattern": "~/.claude/.credentials.json"
+          },
+          {
+            "pattern": "~/.codex/auth.json"
+          },
+          {
+            "pattern": "(^|/)\\.pi/agent/auth\\.json$",
+            "regex": true
+          },
+          {
+            "pattern": "(^|/)\\.claude/\\.credentials\\.json$",
+            "regex": true
+          },
+          {
+            "pattern": "(^|/)\\.codex/auth\\.json$",
+            "regex": true
+          }
+        ],
+        "protection": "noAccess",
+        "onlyIfExists": true,
+        "respectCwd": false
+      },
+      {
+        "id": "exp-integrity",
+        "description": "Experiment ledger and eval definition: written only by the exp CLI and the user",
+        "patterns": [
+          {
+            "pattern": "**/exp.toml"
+          },
+          {
+            "pattern": "**/.exp/**"
+          }
+        ],
+        "protection": "readOnly",
+        "onlyIfExists": true,
+        "blockMessage": "{file} is part of the experiment record. Use the `exp` CLI to change run state; ask the user to edit exp.toml or protected eval files."
+      }
+    ]
+  },
+  "permissionGate": {
+    "requireConfirmation": true,
+    "patterns": [
+      {
+        "pattern": "git reset --hard",
+        "description": "discards uncommitted work",
+        "regex": true
+      },
+      {
+        "pattern": "git clean -",
+        "description": "deletes untracked files",
+        "regex": true
+      },
+      {
+        "pattern": "git push --force",
+        "description": "rewrites remote history",
+        "regex": true
+      },
+      {
+        "pattern": "git push -f",
+        "description": "rewrites remote history",
+        "regex": true
+      },
+      {
+        "pattern": "git checkout -- \\.( |$)",
+        "description": "discards uncommitted work",
+        "regex": true
+      },
+      {
+        "pattern": "git stash drop",
+        "description": "deletes stashed work",
+        "regex": true
+      }
+    ]
+  },
+  "version": "0.19.0"
+}

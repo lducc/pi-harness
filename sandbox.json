@@ -1,0 +1,65 @@
+{
+  "enabled": true,
+  "sandboxUserShell": false,
+  "network": {
+    "disabled": true,
+    "allowAllUnixSockets": true
+  },
+  "filesystem": {
+    "denyMandatoryCwdFiles": false,
+    "denyRead": [
+      "/home",
+      "~/.ssh",
+      "~/.gnupg",
+      "~/.pi/agent/auth.json",
+      "~/.claude/.credentials.json",
+      "~/.codex/auth.json",
+      "~/.config/gh",
+      "~/.config/gcloud",
+      "~/.config/pi-setup",
+      "~/.config/zen",
+      "~/.config/discord",
+      "~/.local/share/keyrings",
+      ".env"
+    ],
+    "allowRead": [
+      ".",
+      "~/code",
+      "~/tools",
+      "~/learning",
+      "~/Downloads",
+      "~/Zotero",
+      "~/.pi",
+      "~/.agents",
+      "~/.cache",
+      "~/.config",
+      "~/.local",
+      "~/.npm",
+      "~/.nvm",
+      "~/.cargo",
+      "~/.gitconfig",
+      "~/miniconda3",
+      "~/ai-envs",
+      "~/nltk_data",
+      "~/scikit_learn_data"
+    ],
+    "allowWrite": [
+      ".",
+      "/tmp",
+      "~/code",
+      "~/tools",
+      "~/learning",
+      "~/.cache",
+      "~/.npm",
+      "~/.local/share/uv",
+      "~/.pi/agent/memory"
+    ],
+    "denyWrite": [
+      ".env",
+      ".env.*",
+      "*.pem",
+      "*.key",
+      "~/.pi/agent/auth.json"
+    ]
+  }
+}
