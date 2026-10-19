@@ -1,0 +1,31 @@
+# Lint for the simple-code skill: flags ceremony, dead code, and needless complexity.
+# Run: ruff check --config SKILL_DIR/ruff.toml <files>
+line-length = 110
+
+[lint]
+select = [
+  "F",       # unused imports and variables
+  "ARG",     # unused arguments
+  "ERA",     # commented-out code
+  "PIE",     # needless pass, placeholders
+  "RET",     # needless else/assign before return
+  "SIM",     # simpler ifs, withs, comprehensions
+  "C4",      # simpler comprehensions
+  "UP",      # old syntax
+  "BLE",     # blind except
+  "TRY203",  # try/except that only re-raises
+  "TID251",  # banned imports below
+  "C90",     # complexity
+  "PLR0911", "PLR0912", "PLR0913", "PLR0915",  # too many returns, branches, args, statements
+]
+
+[lint.flake8-tidy-imports.banned-api]
+"__future__.annotations".msg = "not needed on Python 3.12+; drop it"
+
+[lint.mccabe]
+max-complexity = 8
+
+[lint.pylint]
+max-args = 5
+max-branches = 8
+max-statements = 35
