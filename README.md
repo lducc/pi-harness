@@ -16,14 +16,26 @@ The script backs up the old `~/.pi/agent` to `~/pi-agent-backup-<date>.tgz` and 
 After the script, on a new machine:
 
 1. Open a new shell and run `pi`.
-2. Ask it to fill `memory/machine.md` and `memory/projects.md`. The script leaves templates there.
+2. Ask it to fill `memory/me.md` and the notes in `memory/setup/`. The script leaves templates there.
 3. Add any missing keys (for example `DEEPGRAM_API_KEY`) to your shell rc. Keys never go in this repo.
 
 ## Layout and sync
 
 `~/.pi/agent` is this repo. The `.gitignore` is an allowlist, so pi's own files (auth, sessions, installed packages, caches) never get committed.
 
-Memory lives in `memory/` and stays on each machine: `machine.md` (hardware, OS, toolchain), `projects.md` (local projects), `decisions.md` (dated setup decisions) and `inbox.md` (candidate rules). `AGENTS.md` tells the agent to read the file it needs before changing setup or entering a project, and to add a dated line to `decisions.md` after a change. When you correct it, it logs a candidate rule in `inbox.md`. Nothing becomes a rule until you accept it with `/inbox`, which writes it into `AGENTS.md` or a skill, and those do sync.
+Memory is a knowledge base about you in `memory/`, kept on each machine and out of git. On my laptop it is a folder in my Obsidian vault, symlinked to `~/.pi/agent/memory`.
+
+| Path | Holds |
+|---|---|
+| `me.md` | who you are, goals, current focus, how to work with you (under 60 lines) |
+| `taste/` | preferences: code, writing, look, anything else |
+| `research/` | what you know and found, with sources |
+| `setup/` | `machine.md`, `projects.md`, `decisions.md` |
+| `inbox.md` | candidates waiting for review |
+
+`extensions/memory.ts` puts `me.md` and a one-line index of every note (from its `description:` frontmatter) into each session. The agent opens a note when the task touches it. `/memory off` drops the profile for one session.
+
+Memory changes only through you. When you correct it or state a preference or fact, it logs a candidate with evidence in `inbox.md`. `/inbox` sends each accepted item to one place: a hard rule to `AGENTS.md`, a procedure to a skill, anything else to a memory note. `/memory-review` (monthly) flags stale, contradicting or bloated notes and proposes candidates from recent sessions.
 
 Sync the setup between machines:
 
@@ -46,7 +58,8 @@ After `pi update`, the `pi` shell function re-applies the subagent patch.
 
 - `extensions/learn-mode.ts`: `/learn` gives hints before answers, asks for your plan or bug guess first, leaves `TODO(you)` at design points and asks for an explain-back before commits. `/reveal` gives the full answer. `/ship` (the default) turns it off.
 - `extensions/review.ts`: every missed `quiz` becomes a card in `~/learning/cards.jsonl`. `/review` re-asks due cards from memory at 1, 3, 7, 21 and 60 days.
-- `prompts/inbox.md`: `/inbox` walks the candidate rules the agent logged in `memory/inbox.md`. You accept, edit or reject each one.
+- `prompts/inbox.md`: `/inbox` walks the candidates the agent logged in `memory/inbox.md`. You accept, edit or reject each one.
+- `extensions/memory.ts`, `prompts/memory-review.md`: the memory knowledge base (see above).
 
 ### Extensions
 

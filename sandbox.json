@@ -52,7 +52,8 @@
       "~/.cache",
       "~/.npm",
       "~/.local/share/uv",
-      "~/.pi/agent/memory"
+      "~/.pi/agent/memory",
+      "~/Obsidian Vault/memory"
     ],
     "denyWrite": [
       ".env",

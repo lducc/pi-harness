@@ -1,4 +1,8 @@
 ---
-description: Review candidate harness rules in memory/inbox.md
+description: Review candidate memory and rules in memory/inbox.md
 ---
-Read `~/.pi/agent/memory/inbox.md`. For each candidate, show the rule and its evidence line, then ask with `ask_user_question`: accept, edit, or reject. Accepted rules: add one line to the right file (`AGENTS.md` for behavior, a skill for a procedure), and in `AGENTS.md` merge it into or replace an existing line so the file does not grow. Add a dated line to `memory/decisions.md`. Rejected rules: move them to `memory/rejected.md` with the date. Then remove every handled candidate from `inbox.md`. Never rewrite a file wholesale.
+Read `~/.pi/agent/memory/inbox.md`. For each candidate, show it with its evidence line and ask with `ask_user_question`: accept, edit, or reject. Put each accepted item in one place, as one dated line:
+- a hard rule the agent must always follow: `AGENTS.md`, merged into or replacing an existing line so the file does not grow;
+- a procedure: the matching skill;
+- a fact about the user, their taste, or research knowledge: the matching note in `memory/` (`me.md`, `taste/`, `research/`), or a new note with a `description:` frontmatter line if none fits.
+Move rejected items to `memory/rejected.md` with the date. Remove every handled item from `inbox.md`. Never rewrite a file wholesale.

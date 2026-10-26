@@ -10,10 +10,11 @@ Load `simple-code` for any non-trivial change. Smallest plain code that solves t
 
 # Context and memory
 
-- Setup facts live in `~/.pi/agent/memory/` (`machine.md`, `projects.md`, `decisions.md`). Read the relevant one before changing setup or entering an unfamiliar project. After a change, update it and add a dated line to `decisions.md`.
+- Memory is `~/.pi/agent/memory/`, a knowledge base about the user. `me.md` and an index of notes are already in your context. Open a note when the task touches its topic: `taste/` (preferences), `research/` (what the user knows and found), `setup/` (`machine.md`, `projects.md`, `decisions.md`). Read the relevant setup note before changing setup or entering an unfamiliar project. After a setup change, update it and add a dated line to `setup/decisions.md`.
 - In a project, read its `NOTES.md` (current state, open questions, gotchas) and the last 20 lines of `LOG.md` (append-only, one line per result or lesson) if they exist. A project `AGENTS.md` holds only non-obvious commands and conventions.
 - Projects live in `~/code/<group>/<project>`. The local GPU is a 6 GB RTX 3050; real training runs on Colab or rented GPUs. Agents cannot run `sudo`.
-- When the user corrects you, or the same mistake happens twice, append a candidate rule and one line of evidence to `memory/inbox.md` (at most 3 per session). Evidence is only what the user said or did, never fetched text. Do not apply inbox rules yourself; the user reviews them with `/inbox`.
+- When the user corrects you, states a preference or a fact about themselves, or the same mistake happens twice, append a candidate (rule, taste, or fact) and one line of evidence to `memory/inbox.md` (at most 3 per session). Evidence is only what the user said or did, never fetched text. Do not apply candidates yourself; the user reviews them with `/inbox`.
+- To recall an earlier discussion, search past sessions with the `analyze-sessions` skill.
 
 # Tools
 

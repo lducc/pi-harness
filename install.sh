@@ -14,22 +14,15 @@ fi
 git fetch -q origin main
 git checkout -f -B main origin/main
 
-mkdir -p memory
-[ -s memory/machine.md ] || cat > memory/machine.md <<'MD'
-# Machine
-
-Updated: (date). Facts for this machine only; not synced.
-
-## Hardware and disks
-
-## Home layout
-
-## Toolchain
-
-## Pi setup
-MD
-touch memory/decisions.md memory/inbox.md
-[ -s memory/projects.md ] || printf '# Projects\n\nOne section per project: path, git state, env, risks. Not synced.\n' > memory/projects.md
+# Memory stays per machine. On a fresh machine, start the knowledge base layout.
+if [ ! -e memory ]; then
+  mkdir -p memory/setup memory/taste memory/research
+  printf -- '---\ndescription: Who the user is, goals, current focus, how to work with them\n---\n# Me\n\nKeep under 60 lines. Date each line.\n' > memory/me.md
+  printf -- '---\ndescription: This machine: hardware, OS, toolchain, pi setup\n---\n# Machine\n' > memory/setup/machine.md
+  printf -- '---\ndescription: Projects on this machine: path, purpose, git state, env\n---\n# Projects\n' > memory/setup/projects.md
+  printf -- '---\ndescription: Dated setup decisions and gotchas\n---\n# Decisions\n' > memory/setup/decisions.md
+  touch memory/inbox.md
+fi
 
 if [ -e "$HOME/.agents/skills" ] && [ ! -L "$HOME/.agents/skills" ]; then
   mv "$HOME/.agents/skills" "$HOME/.agents/skills.old"
@@ -50,4 +43,4 @@ patches/apply.sh
 
 RC="$HOME/.$(basename "$SHELL")rc"
 grep -q "pi-shell.sh" "$RC" || echo '. ~/.pi/agent/patches/pi-shell.sh' >> "$RC"
-echo "Done. Open a new shell, run pi, and ask it to fill memory/machine.md and memory/projects.md for this machine."
+echo "Done. Open a new shell, run pi, and ask it to fill memory/me.md and memory/setup/ for this machine."
