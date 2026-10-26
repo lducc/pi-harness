@@ -1,6 +1,6 @@
 # pi-harness
 
-My [pi](https://github.com/earendil-works/pi) agent setup. It holds the rules, agents, extensions, skills and the learning loop. Auth, keys, sessions and per-machine memory stay out of the repo.
+My [pi](https://github.com/earendil-works/pi) agent setup. It holds the rules, agents, extensions, skills and the learning loop. Auth, keys, sessions and memory stay out of the repo.
 
 ## Install
 
@@ -13,7 +13,26 @@ bash /tmp/pi-harness/install.sh
 
 The script backs up the old `~/.pi/agent` to `~/pi-agent-backup-<date>.tgz` and checks this repo out over it. Untracked files such as `auth.json` stay. It then links `~/.agents/skills`, clones `vibe-wise` and `exp` into `~/tools`, installs extension and package deps, re-applies the subagent patch and sources the `pi` shell function.
 
-Update with `git -C ~/.pi/agent pull`.
+After the script, on a new machine:
+
+1. Open a new shell and run `pi`.
+2. Ask it to fill `memory/machine.md` and `memory/projects.md`. The script leaves templates there.
+3. Add any missing keys (for example `DEEPGRAM_API_KEY`) to your shell rc. Keys never go in this repo.
+
+## Layout and sync
+
+`~/.pi/agent` is this repo. The `.gitignore` is an allowlist, so pi's own files (auth, sessions, installed packages, caches) never get committed.
+
+Memory lives in `memory/` and stays on each machine: `machine.md` (hardware, OS, toolchain), `projects.md` (local projects), `decisions.md` (dated setup decisions) and `inbox.md` (candidate rules). `AGENTS.md` tells the agent to read the file it needs before changing setup or entering a project, and to add a dated line to `decisions.md` after a change. When you correct it, it logs a candidate rule in `inbox.md`. Nothing becomes a rule until you accept it with `/inbox`, which writes it into `AGENTS.md` or a skill, and those do sync.
+
+Sync the setup between machines:
+
+```bash
+git -C ~/.pi/agent pull     # before a session
+git -C ~/.pi/agent add -A && git -C ~/.pi/agent commit -m "chore: sync" && git -C ~/.pi/agent push
+```
+
+After `pi update`, the `pi` shell function re-applies the subagent patch.
 
 ## Contents
 

@@ -15,7 +15,21 @@ git fetch -q origin main
 git checkout -f -B main origin/main
 
 mkdir -p memory
-touch memory/machine.md memory/projects.md memory/decisions.md memory/inbox.md
+[ -s memory/machine.md ] || cat > memory/machine.md <<'MD'
+# Machine
+
+Updated: (date). Facts for this machine only; not synced.
+
+## Hardware and disks
+
+## Home layout
+
+## Toolchain
+
+## Pi setup
+MD
+touch memory/decisions.md memory/inbox.md
+[ -s memory/projects.md ] || printf '# Projects\n\nOne section per project: path, git state, env, risks. Not synced.\n' > memory/projects.md
 
 if [ -e "$HOME/.agents/skills" ] && [ ! -L "$HOME/.agents/skills" ]; then
   mv "$HOME/.agents/skills" "$HOME/.agents/skills.old"
@@ -36,4 +50,4 @@ patches/apply.sh
 
 RC="$HOME/.$(basename "$SHELL")rc"
 grep -q "pi-shell.sh" "$RC" || echo '. ~/.pi/agent/patches/pi-shell.sh' >> "$RC"
-echo "Done. Open a new shell, run pi, and fill memory/machine.md for this machine."
+echo "Done. Open a new shell, run pi, and ask it to fill memory/machine.md and memory/projects.md for this machine."
