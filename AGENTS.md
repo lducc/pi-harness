@@ -1,12 +1,21 @@
 # Output
 
 - Be brief. Default reply: under 150 words, the result first. Expand only when asked.
-- Report outcomes, not process: what changed, what failed, what needs the user. No raw logs or file dumps; give paths.
+- Report outcomes, not process: what changed, what failed, what needs the user. Skip the steps that worked.
+- Progress notes: one line before a new phase, only when the work spans several steps.
+- No raw logs, long stdout, or full file dumps; give paths.
 - Prose deliverables (docs, READMEs, paper text, commits): load `writing-whip` and run its lint before sending.
 
 # Code
 
-Load `simple-code` for any non-trivial change. Smallest plain code that solves the stated case: stdlib first, no options or layers nobody asked for, let errors raise, few comments, written the way a human would (short, only the non-obvious why; no file-header essays, no result numbers or history), no `from __future__`. Reread the diff and delete what was added "just in case". Match the surrounding code. UI or visual design: `impeccable`, `frontend-design`, `design-taste-frontend`.
+Default style everywhere (details and lint in the `simple-code` skill; load it for any non-trivial change):
+- Smallest plain code that solves the stated case. KISS, YAGNI, Pareto: no options, layers, or abstractions nobody asked for.
+- Plain functions, stdlib first, imports only what is used, no `from __future__`.
+- Let errors raise; try/except only for a real recovery. No defensive checks for impossible cases.
+- Few comments, written the way a human would: short, only the non-obvious why. No file-header essays, result numbers, or history. No boilerplate docstrings or tests beyond one small check.
+- Reread the diff and delete what was added "just in case". Match the surrounding code.
+
+UI or visual design: `impeccable`, `frontend-design`, `design-taste-frontend`.
 
 # Context and memory
 
@@ -19,27 +28,28 @@ Load `simple-code` for any non-trivial change. Smallest plain code that solves t
 # Tools
 
 - Skills that name `AskUserQuestion` mean `ask_user_question`; use `quiz` for graded checks.
+- Shell: simple read-only commands for inspection; avoid needless pipes and chaining.
 - Web: `ketch search "q"` (`--multi` for hard questions), `ketch scrape <url> --max-chars 6000 --trim`, `ketch code`, `ketch docs`. Cite primary sources. Papers: the research-agent skill. Never use the legacy `web_search` tool.
 
 # Working style
 
-- New user instructions override the current plan.
+- New user instructions override the current plan. Drop unfinished optional work.
 - Use the smallest investigation that settles the decision: about 5-8 exploratory calls and 1-2 web searches. Say why before exceeding that.
 - When the user asks for ideas, options, or research directions, first ask for theirs unless already given. Then attack them and add options that differ in kind, not variations.
 - Never wait on long jobs (training, remote runs, downloads): launch in the background, confirm it started, return control.
-- Use a subagent only to keep large exploration out of context or to parallelize a bounded task. Subagents run sandboxed (no long jobs, GPU, children, or polling) and cannot ask follow-ups, so give complete specs.
+- Use a subagent only to keep large exploration out of context or to parallelize a bounded task. Subagents run sandboxed (no long jobs, GPU, children, or polling) and cannot ask follow-ups, so give complete specs. The main session keeps planning, decisions, and anything needing GPU or background jobs.
 
-| Task | Agent |
-|---|---|
-| Find files, map code | `scout` |
-| Web or paper research | `researcher` |
-| Small one-file code or quick fix | `quick` |
-| Implement a fully specified task | `worker` or `worker-luna` |
-| Check a diff, result, or claim | `reviewer` |
-| Diagram | `mermaid-maker`, `svg-maker` |
+| Task | Agent | Model |
+|---|---|---|
+| Find files, map code, answer "where/what is X" | `scout` | Haiku 5.5, low |
+| Web or paper research with sources | `researcher` | Sonnet 5.5, medium |
+| Small, simple code fast (snippet, one-file script, quick fix) | `quick` | GPT-6 luna, low |
+| Implement a task you have fully specified | `worker` (or `worker-luna`) | Sonnet 5.5, medium (GPT-6 luna, xhigh) |
+| Check a diff, result, or claim before reporting it | `reviewer` | Opus 5.5, high |
+| Diagram for a lesson or doc | `mermaid-maker`, `svg-maker` | Sonnet 5.5, low |
 
 # Experiments
 
-Before running one: what decision can it change, what is the cheapest test that changes it, and do existing results already answer it? Prefer inference-only or small-sample tests.
+Before running one: what decision can it change, what is the cheapest test that changes it, and do existing results already answer it? If they do, stop. Prefer inference-only or small-sample tests before retraining or sweeps.
 
-With an `exp.toml`, track runs with `exp` (`~/tools/exp/README.md`). Before `exp new`, ask the user for the expected metric value and an 80% interval, and put both in the hypothesis. After `exp eval`, append one line to `LOG.md`: predicted, got, why it differed. Only `exp eval` numbers count. `exp.toml` and `.exp/` are read-only to agents.
+With an `exp.toml`, track runs with `exp` (`~/tools/exp/README.md`): `exp new` with hypothesis, seed, refs, and kill criterion, then `exp launch` or `exp remote`, `exp status`, `exp eval`, `exp mark`. Before `exp new`, ask the user for the expected metric value and an 80% interval, and put both in the hypothesis. After `exp eval`, append one line to `LOG.md`: predicted, got, why it differed. Only `exp eval` numbers count. `exp.toml` and `.exp/` are read-only to agents.

@@ -1,11 +1,4 @@
-/**
- * review: spaced re-quiz.
- *
- * Every missed or "I don't know" `quiz` answer becomes a card in ~/learning/cards.jsonl.
- * `/review` shows up to 10 due cards in random order. You answer from memory first,
- * then see the answer and grade yourself. Free recall instead of options because
- * recognition is not retrieval.
- */
+// Quiz misses become cards in ~/learning/cards.jsonl; /review re-asks them from memory first, since recognition is not retrieval.
 
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";

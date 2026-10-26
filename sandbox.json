@@ -23,7 +23,6 @@
       ".env"
     ],
     "allowRead": [
-      ".",
       "~/code",
       "~/tools",
       "~/learning",
@@ -41,19 +40,17 @@
       "~/miniconda3",
       "~/ai-envs",
       "~/nltk_data",
-      "~/scikit_learn_data"
+      "~/scikit_learn_data",
+      "~/Obsidian Vault/memory"
     ],
     "allowWrite": [
-      ".",
       "/tmp",
       "~/code",
       "~/tools",
       "~/learning",
       "~/.cache",
       "~/.npm",
-      "~/.local/share/uv",
-      "~/.pi/agent/memory",
-      "~/Obsidian Vault/memory"
+      "~/.local/share/uv"
     ],
     "denyWrite": [
       ".env",

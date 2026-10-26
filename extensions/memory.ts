@@ -1,10 +1,4 @@
-/**
- * memory: puts the user's knowledge base in every session.
- *
- * Adds memory/me.md plus a one-line index of the other notes (from each note's
- * `description:` frontmatter) as a prompt section. The agent opens notes on demand.
- * `/memory off` leaves it out for this session, like a temporary chat.
- */
+// Adds memory/me.md and an index of the other notes to every session; /memory off skips it.
 
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";

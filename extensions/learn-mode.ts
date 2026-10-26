@@ -1,10 +1,4 @@
-/**
- * learn-mode: `/learn` and `/ship` switch.
- *
- * Learn mode adds one prompt section; it never replaces the system prompt, so the
- * coding instructions stay. `/reveal` asks for the full answer. Default is ship.
- * Quiz misses from the M3 explain-back are turned into cards by review.ts.
- */
+// /learn adds a prompt section (never replaces the prompt); /ship turns it off.
 
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
