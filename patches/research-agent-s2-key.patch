@@ -1,0 +1,82 @@
+diff --git a/skills/research-agent/scripts/fetch-paper.mjs b/skills/research-agent/scripts/fetch-paper.mjs
+index 364a497..c45252b 100644
+--- a/skills/research-agent/scripts/fetch-paper.mjs
++++ b/skills/research-agent/scripts/fetch-paper.mjs
+@@ -14,6 +14,18 @@
+ 
+ import { parseArgs } from "node:util";
+ 
++const S2 = { headers: process.env.SEMANTIC_SCHOLAR_API_KEY ? { "x-api-key": process.env.SEMANTIC_SCHOLAR_API_KEY } : {} };
++
++// Semantic Scholar throttles hard even with a key; retry 429s a few times.
++async function s2fetch(url) {
++  for (const wait of [2000, 4000, 8000]) {
++    const res = await fetch(url, S2);
++    if (res.status !== 429) return res;
++    await new Promise((r) => setTimeout(r, wait));
++  }
++  return fetch(url, S2);
++}
++
+ const { values } = parseArgs({
+   options: {
+     id: { type: "string" },
+@@ -44,7 +56,7 @@ async function fetchSemanticScholar(id) {
+   ];
+ 
+   const url = `https://api.semanticscholar.org/graph/v1/paper/${id}?fields=${fields.join(",")}`;
+-  const res = await fetch(url);
++  const res = await s2fetch(url);
+   if (!res.ok) throw new Error(`Semantic Scholar API error ${res.status}: ${await res.text()}`);
+   const p = await res.json();
+ 
+@@ -70,7 +82,7 @@ async function fetchSemanticScholar(id) {
+   // Fetch citations
+   if (includeCitations) {
+     const citUrl = `https://api.semanticscholar.org/graph/v1/paper/${id}/citations?fields=title,year,citationCount,authors,url&limit=${citationLimit}`;
+-    const citRes = await fetch(citUrl);
++    const citRes = await s2fetch(citUrl);
+     if (citRes.ok) {
+       const citData = await citRes.json();
+       result.citedBy = (citData.data || []).map((c) => ({
+@@ -85,7 +97,7 @@ async function fetchSemanticScholar(id) {
+   // Fetch references
+   if (includeReferences) {
+     const refUrl = `https://api.semanticscholar.org/graph/v1/paper/${id}/references?fields=title,year,citationCount,authors,url&limit=${citationLimit}`;
+-    const refRes = await fetch(refUrl);
++    const refRes = await s2fetch(refUrl);
+     if (refRes.ok) {
+       const refData = await refRes.json();
+       result.references = (refData.data || []).map((r) => ({
+diff --git a/skills/research-agent/scripts/search-papers.mjs b/skills/research-agent/scripts/search-papers.mjs
+index f96fc42..a24291d 100644
+--- a/skills/research-agent/scripts/search-papers.mjs
++++ b/skills/research-agent/scripts/search-papers.mjs
+@@ -19,6 +19,18 @@
+ 
+ import { parseArgs } from "node:util";
+ 
++const S2 = { headers: process.env.SEMANTIC_SCHOLAR_API_KEY ? { "x-api-key": process.env.SEMANTIC_SCHOLAR_API_KEY } : {} };
++
++// Semantic Scholar throttles hard even with a key; retry 429s a few times.
++async function s2fetch(url) {
++  for (const wait of [2000, 4000, 8000]) {
++    const res = await fetch(url, S2);
++    if (res.status !== 429) return res;
++    await new Promise((r) => setTimeout(r, wait));
++  }
++  return fetch(url, S2);
++}
++
+ const { values } = parseArgs({
+   options: {
+     query: { type: "string", short: "q" },
+@@ -53,7 +65,7 @@ async function searchSemanticScholar(query, limit) {
+   if (sortBy === "citations") params.set("sort", "citationCount:desc");
+ 
+   const url = `https://api.semanticscholar.org/graph/v1/paper/search?${params}`;
+-  const res = await fetch(url);
++  const res = await s2fetch(url);
+   if (!res.ok) {
+     const text = await res.text();
+     throw new Error(`Semantic Scholar API error ${res.status}: ${text}`);
